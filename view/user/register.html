@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta httpequiv="ContentType" content="text/html;charset=utf8">
+  <title>Register</title>
+</head>
+
+<body>
+  <h1>Register</h1>
+  {{ if .error }}
+  <p>{{ .error }}</p>
+  {{ end }}
+  <form action="/user/register" method="post">
+    <p>ユーザー名: <input type="text" name="username"></p>
+    <p>メールアドレス: <input type="text" name="email"></p>
+    <p>パスワード: <input type="password" name="password"></p>
+    <p><input type="submit" value="登録"></p>
+  </form>
+</body>
+
+</html>

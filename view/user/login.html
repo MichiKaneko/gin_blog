@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta httpequiv="ContentType" content="text/html;charset=utf8">
+  <title>LOGIN</title>
+</head>
+
+<body>
+  <h1>LOGIN</h1>
+  {{ if .error }}
+  <p>{{ .error }}</p>
+  {{ end }}
+  <form action="/user/login" method="post">
+    <p>ユーザー名: <input type="text" name="username"></p>
+    <p>パスワード: <input type="password" name="password"></p>
+    <p><input type="submit" value="ログイン"></p>
+  </form>
+</body>
+
+</html>
