@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>新規投稿 | ねころぐ</title>
+</head>
+
+<body>
+  <h1>新規投稿</h1>
+  {{ if .error }}
+  <p>{{ .error }}</p>
+  {{ end }}
+  <form action="/user/posts/new" method="post">
+    <p>タイトル</p>
+    <input type="text" name="title">
+    <p>内容</p>
+    <textarea name="content" cols="30" rows="10"></textarea>
+    <input type="submit" value="投稿">
+  </form>
+</body>
+
+</html>

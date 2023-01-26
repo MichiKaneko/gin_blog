@@ -29,6 +29,11 @@ func InitRouter() *gin.Engine {
 
 	r.GET("/user/admin", controller.GetAdmin)
 
+	r.GET("/user/posts", controller.ShowUserPosts)
+
+	r.GET("/user/posts/new", controller.GetNewPost)
+	r.POST("/user/posts/new", controller.CreateNewPost)
+
 	r.NoRoute(func(c *gin.Context) {
 		c.HTML(404, "404.html", gin.H{})
 	})

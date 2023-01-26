@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>全投稿 | ねころぐ</title>
+</head>
+
+<body>
+  <h1>全投稿</h1>
+  {{ if .error }}
+  <p>{{ .error }}</p>
+  {{ end }}
+  <div>
+    <a href="/user/posts/new">新規投稿</a>
+  </div>
+  {{ range .posts }}
+  <div style="border: 1px solid #000; padding: 10px; margin: 10px 0;">
+    <p>タイトル: {{ .Title }}</p>
+    <p>内容: {{ .Content }}</p>
+    <p>投稿日時: {{ .CreatedAt }}</p>
+    <p>更新日時: {{ .UpdatedAt }}</p>
+  </div>
+  {{ end }}
+</body>
+
+</html>

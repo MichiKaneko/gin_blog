@@ -69,6 +69,19 @@ func PostRegister(c *gin.Context) {
 }
 
 func GetLogin(c *gin.Context) {
+	var user model.User
+	session := sessions.Default(c)
+	username := session.Get("username")
+
+	if username != nil {
+		user = getUserByUsername(username.(string))
+
+		if user != (model.User{}) {
+			c.Redirect(302, "/user/admin")
+			return
+		}
+	}
+
 	c.HTML(200, "login.html", gin.H{})
 }
 
@@ -142,5 +155,11 @@ func createUser(username, email, password string) []error {
 func getUserByUsername(username string) model.User {
 	var user model.User
 	db.Database.Where("username = ?", username).First(&user)
+	return user
+}
+
+func getUserByEmail(email string) model.User {
+	var user model.User
+	db.Database.Where("email = ?", email).First(&user)
 	return user
 }
