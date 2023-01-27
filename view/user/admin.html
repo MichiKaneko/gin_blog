@@ -9,7 +9,10 @@
 <body>
   <h1>ADMIN</h1>
   <p>ユーザー名: {{ .user.Username }}</p>
-  <p>パスワード: {{ .user.Password }}</p>
+  <p>パスワード: {{ .user.Email }}</p>
+  <div>
+    <a href="/user/posts/new">新規投稿</a>
+  </div>
   <p><a href="/user/logout">ログアウト</a></p>
 </body>
 

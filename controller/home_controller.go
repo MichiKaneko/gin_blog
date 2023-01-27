@@ -8,9 +8,14 @@ import (
 
 func Home(c *gin.Context) {
 	var posts []model.Post
+	var navItems []model.NavItem
 	db.Database.Find(&posts)
+	db.Database.Find(&navItems)
 
 	c.HTML(200, "index.html", gin.H{
-		"posts": posts,
+		"title":    "Home",
+		"posts":    posts,
+		"navItems": navItems,
+		"active":   "/",
 	})
 }

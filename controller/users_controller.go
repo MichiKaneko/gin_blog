@@ -42,7 +42,9 @@ func PostRegister(c *gin.Context) {
 
 	if username == "" || email == "" || password == "" {
 		c.HTML(404, "register.html", gin.H{
-			"error": "Please fill in all fields",
+			"error":    "全ての項目を入力してください",
+			"username": username,
+			"email":    email,
 		})
 		return
 	}

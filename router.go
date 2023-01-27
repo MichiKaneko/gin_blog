@@ -10,12 +10,17 @@ import (
 )
 
 func InitRouter() *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
+
+	r.Use(gin.Logger(), gin.Recovery())
+
 	secret := os.Getenv("SECRET")
 	store := cookie.NewStore([]byte(secret))
 	r.Use(sessions.Sessions("nekoblog_user", store))
 
 	r.LoadHTMLGlob("view/**/*")
+	r.Static("/js", "./static/js")
+	r.Static("/css", "./static/css")
 
 	r.GET("/", controller.Home)
 	r.GET("/posts/:id", controller.GetPostById)
